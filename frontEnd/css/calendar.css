@@ -1,6 +1,6 @@
 body{
-    height: 100vh;
-    width: auto;
+
+    margin: 0px;
 }
 #calendar{
     display: flex;

@@ -2,6 +2,7 @@
 const days = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
 const calendar = document.getElementById('calendar');
 
+//Función para graficar los turnos y dias del calendario
 function weeklyCalendarDraw(calendarCol, calendarTable){
     for (let i = 0; i < calendarCol; i++) {
         let calendarRow = document.createElement('tr');
@@ -16,6 +17,7 @@ function weeklyCalendarDraw(calendarCol, calendarTable){
         }
     }
 }
+//Función para grafucar los horarios y el medico seleccionado
 function weeklyCalendarHourDraw(calendarCol, calendarTable){
     for (let i = 0; i < calendarCol; i++) {
         let calendarRow = document.createElement('tr');

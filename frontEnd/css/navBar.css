@@ -1,0 +1,9 @@
+#navBar{
+    height: 10%;
+    background-color: black;
+}
+#navBarList{
+    color: white;
+    margin: 0;
+    list-style: none;
+}
