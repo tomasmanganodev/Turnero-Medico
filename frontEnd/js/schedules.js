@@ -23,13 +23,13 @@ export class schedule {
 
     switch (this.#durationTurns) {
       case 1:
-        for (let i = 0; i < scheduleHours; i++) {
+        for (let i = 0; i <= scheduleHours; i++) {
           let hour = (this.#initialHour + i).toString();
           this.#arrayHour.push(hour);
         }
         return this.#arrayHour;
       case 2:
-        for (let i = 0; i < scheduleHours; i++) {
+        for (let i = 0; i <= scheduleHours; i++) {
           let hour2 = (this.#initialHour + i).toString();
           if (i + 1 < this.#lastHour) {
             this.#arrayHour.push(hour2);
@@ -40,7 +40,7 @@ export class schedule {
         }
         return this.#arrayHour;
       case 4:
-        for (let i = 0; i < scheduleHours; i++) {
+        for (let i = 0; i <= scheduleHours; i++) {
           let hour3 = (this.#initialHour + i).toString();
           if (i + 1 < this.#lastHour) {
             this.#arrayHour.push(hour3);
@@ -58,7 +58,7 @@ export class schedule {
   }
   weeklyCalendar() {
     let calendarColumns =
-      (this.#lastHour - this.#initialHour) * this.#durationTurns + 1;
+      (this.#lastHour - this.#initialHour) * this.#durationTurns + 2;
     let calendarTable = document.createElement("table");
     let hourTable = document.createElement("table");
     calendarTable.id = "calTable";
@@ -83,8 +83,13 @@ export class schedule {
         calendarRow.appendChild(calendarCell);
         if (i === 0) {
           calendarCell.textContent = this.#days[j];
+          calendarCell.setAttribute("id", "day_" + j.toString());
         } else {
-          calendarCell.classList.add("turn");
+          calendarCell.classList.add(
+            "turn",
+            "day_" + j.toString(),
+            this.#arrayHour[i - 1].toString()
+          );
         }
       }
     }
@@ -102,25 +107,4 @@ export class schedule {
       }
     }
   }
-
-  /*export function setDuration(initialHour, lastHour, durationTurns) {
-  const scheduleHours = lastHour - initialHour;
-  const arrayHour = [];
-  switch (durationTurns) {
-    case 1:
-      for (let i = 0; i < scheduleHours; i++) {
-        let hour = (initialHour + i).toString();
-        arrayHour.push(hour);
-      }
-      return arrayHour;
-    case 2:
-      for (let i = 0; i < scheduleHours; i++) {
-        let hour = (initialHour + i).toString();
-        arrayHour.push(hour);
-      }
-    case 4:
-
-    default:
-  }
-} */
 }

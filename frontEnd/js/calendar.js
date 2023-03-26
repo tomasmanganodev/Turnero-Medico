@@ -1,17 +1,19 @@
 dayjs.extend(window.dayjs_plugin_weekOfYear);
-
-console.log(dayjs().week(12));
-
 import { schedule } from "./schedules.js";
 
-const userSchedule = new schedule(7, 12, 1);
+let d = dayjs("1990").get("year");
+console.log(d);
+
+const userSchedule = new schedule(7, 12, 4);
 
 userSchedule.weeklyCalendar();
 
-/*import { weeklyCalendar } from "./testing.js";
+for (let i = 0; i < 7; i++) {
+  //const N = "day_" + i.toString();
+  let day = document.getElementById("day_" + i.toString());
 
-let calendar;
-
-// dayjs().format()
-
-weeklyCalendar(7, 12, 2);*/
+  let d = dayjs().day(i);
+  day.textContent += " " + d.get("date").toString();
+  console.log(d.get("date"));
+  //console.log(w.set("day", i));
+}

@@ -1,0 +1,64 @@
+#interface {
+  width: 20%;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  min-height: 600px;
+  max-height: 700px;
+  gap: 10px;
+}
+
+#arrowButtons {
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  background-color: #16c2d5;
+  border-radius: 1%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.arrowButton {
+  background-color: #89dee2;
+  height: 80%;
+  border: none;
+  text-decoration: none;
+  border-radius: 50%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  margin: 5px 5px 5px 5px;
+}
+
+#Week {
+  height: 20%;
+  background-color: #16c2d5;
+  border-radius: 1%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#Menu {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #16c2d5;
+  border-radius: 1%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.buttonMenu {
+  border-radius: 2%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  min-height: 40px;
+  width: 90%;
+  margin: 0 5% 0 5%;
+  background-color: #89dee2;
+  font-family: "Roboto", sans-serif;
+}

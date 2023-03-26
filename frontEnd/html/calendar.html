@@ -18,26 +18,30 @@
     </div>
     <div id="schedule">
       <div id="calendar"></div>
-      <div id="interfaz">
+      <div id="interface">
         <div id="arrowButtons">
-          <button type="submit">
+          <button type="submit" class="arrowButton">
             <img
               src="../icons/arrow_back_FILL1_wght400_GRAD0_opsz48.svg"
               alt="arrow_back.svg"
             />
           </button>
-          <button type="submit">
+          <button type="submit" class="arrowButton">
             <img
               src="../icons/arrow_forward_FILL1_wght400_GRAD0_opsz48.svg"
               alt="arrow_next.svg"
             />
           </button>
         </div>
-        <div></div>
-        <div>
-          <button id="buttonAdd"></button>
-          <button id="buttonUpd"></button>
-          <button id="buttonDel"></button>
+        <div id="Week">
+          <label for="buttonWeek">Selecionar fecha: </label>
+          <input type="date" name="buttonWeek" id="buttonWeek" />
+          <button class="buttonMenu">Cambiar fecha</button>
+        </div>
+        <div id="Menu">
+          <button id="buttonAdd" class="buttonMenu">Agregar turno</button>
+          <button id="buttonUpd" class="buttonMenu">Modificar turno</button>
+          <button id="buttonDel" class="buttonMenu">Eliminar turno</button>
         </div>
       </div>
     </div>
