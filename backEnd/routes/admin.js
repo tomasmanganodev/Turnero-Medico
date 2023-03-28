@@ -1,23 +1,12 @@
-const express = require('express');
+//Importar express
+const express = require("express");
+//Importar Express router
 const router = express.Router();
-const adminController = require('../controllers/admin');
+//Importar archivo admin
+const adminController = require("../controllers/admin");
 
-//GET User
-router.get('/add', adminController.getAddUser);
-router.get('/add/medic', adminController.getAddUserMedic);
+//GET  Rutas
+router.get("/list/medics", adminController.getMedic);
 
-
-
-//Get Medic
-// router.get('/medic/add', adminController.getAddMedic);
-
-//POST  User 
-router.post('/add', adminController.postAddUser);
-router.post('/add/medic', adminController.postAddUserMedic);
-
-// router.post('/medic/add', adminController.postAddMedic);
-router.post('/consult/add',);
-router.post('/consult/del',);
-router.post('/consult/upd',);
-
+//Exportar router
 module.exports = router;

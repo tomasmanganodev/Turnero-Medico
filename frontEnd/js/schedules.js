@@ -82,7 +82,6 @@ export class schedule {
         calendarCell.classList.add("calCell");
         calendarRow.appendChild(calendarCell);
         if (i === 0) {
-          calendarCell.textContent = this.#days[j];
           calendarCell.setAttribute("id", "day_" + j.toString());
         } else {
           calendarCell.classList.add(
@@ -105,6 +104,21 @@ export class schedule {
       if (i != 0) {
         calendarCell.textContent = this.#arrayHour[i - 1];
       }
+    }
+  }
+
+  setDays() {
+    for (let i = 0; i < 7; i++) {
+      const dayName = document.createElement("div");
+      const dayDate = document.createElement("div");
+      const dayId = "day_" + i.toString();
+      dayName.setAttribute("id", dayId + "_name");
+      dayDate.setAttribute("id", dayId + "_date");
+      dayName.textContent = this.#days[i];
+      const calendarCell = document.getElementById(dayId);
+      calendarCell.appendChild(dayName);
+      calendarCell.appendChild(dayDate);
+      console.log(calendarCell);
     }
   }
 }
