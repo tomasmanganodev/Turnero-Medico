@@ -3,7 +3,7 @@ const client = require("../models/client");
 //Importar user
 const user = require("../models/user");
 //Importar medic
-const medictype = require("../models/medic");
+const medic_type = require("../models/medic");
 //Importar consult
 const medicDate = require("../models/consult");
 //importar body-parser
@@ -27,20 +27,28 @@ exports.postAddClient = (req, res, next) => {
     });
 };
 
-exports.getCalendarData = (req, res, next) => {
-  medictype.findAll().then((medics) => {
+exports.getMedicType = async (req, res, next) => {
+  try {
+    const medics = await medic_type.findAll();
     res.status(201).json({
-      medicList: medics[0],
+      list: medics[0],
     });
-  });
+  } catch (error) {
+    next(error);
+  }
+
+  /*medic_type.findAll().then((medics) => {
+    res.status(201).json({
+      list: medics[0],
+    });
+  });*/
 };
 
 exports.getMedic = (req, res, next) => {
-  console.log("hola"); /*user.findAllMedics());
-        user.findAllMedics()
-        .then(Medics  =>{
-            console.log(Medics);
-        })*/
+  user.findAllMedics();
+  user.findAllMedics().then((Medics) => {
+    console.log(Medics);
+  });
 };
 
 //Funcion para agregar un turno
@@ -61,4 +69,13 @@ exports.addTurn = (req, res, next) => {
   Client.save();
   const MedicDate = new medicDate(null, dia, dni, 24);
   MedicDate.save();
+};
+
+exports.addMedicType = (req, res, next) => {
+  //variables
+
+  const specialization = req.body.medicType;
+
+  const medicType = new medic_type(null, specialization);
+  medicType.save();
 };

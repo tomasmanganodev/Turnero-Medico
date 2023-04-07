@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar</title>
+    <link rel="stylesheet" href="../css/calendar.css" />
+    <link rel="stylesheet" href="../css/navBar.css" />
+  </head>
+  <body>
+    <div id="navBar">
+      <ul id="navBarList">
+        <li><a class="navBarLink" href="">Telegram Bot</a></li>
+        <li><a class="navBarLink" href="">Calendario</a></li>
+        <li><a class="navBarLink" href="">Historial</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <form id="formUser1">
+        <label for="firstName">Nombre</label>
+        <input type="text" name="firstName" id="firstName" />
+        <label for="lastName">Apellido</label>
+        <input type="text" name="lastName" id="lastName" />
+        <label for="medicListType">Especialidad</label>
+        <select name="medicListType" id="medicListType"></select>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" />
+        <label for="password">Contraseña</label>
+        <input type="password" name="password" id="password" />
+
+        <button type="submit" class="button">Agregar</button>
+      </form>
+    </div>
+    <script src="../js/fetch/user.js"></script>
+  </body>
+</html>

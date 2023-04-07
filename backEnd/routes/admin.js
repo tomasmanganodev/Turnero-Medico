@@ -7,6 +7,8 @@ const adminController = require("../controllers/admin");
 
 //GET  Rutas
 router.get("/list/medics", adminController.getMedic);
+router.get("/list/medicType", adminController.getMedicType);
+router.post("/medicType/add", adminController.addMedicType);
 
 //Exportar router
 module.exports = router;

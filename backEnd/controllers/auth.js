@@ -8,7 +8,49 @@ const { validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 
 //Funcion para registrar un usuario
-exports.signup = (req, res, next) => {
+exports.signup = async (req, res, next) => {
+  //Resultados de la validación
+  const errors = validationResult(req);
+
+  //Verificar si existe algun error
+  if (!errors.isEmpty()) {
+    const error = new Error("Validation failed.");
+    error.statusCode = 422;
+    error.data = errors.array();
+    console.log(errors.array());
+    throw error;
+  }
+
+  //Constantes
+  const email = req.body.email;
+  const password = req.body.password;
+
+  try {
+    const salt = await bcrypt.genSalt(10);
+    //Hash la constraseña
+    const hashedPassword = await bcrypt.hash(password, salt);
+    await user.saveByEmailAndPass(email, hashedPassword);
+    res.status(201).json({ message: "User created" });
+  } catch (error) {
+    next(error);
+  }
+
+  /*
+  bcrypt
+    .hash(password, 12)
+    .then((passwordHashed) => {
+      //Guardando nuevo usuario
+      
+    })
+    .then((result) => {
+      res.status(201).json({ message: "User created" });
+    })
+    .catch((err) => {
+      console.log(err);
+    });*/
+};
+
+exports.signup1 = async (req, res, next) => {
   //Resultados de la validación
   const errors = validationResult(req);
 
@@ -26,29 +68,25 @@ exports.signup = (req, res, next) => {
   const lastName = req.body.lastName;
   const email = req.body.email;
   const password = req.body.password;
-  const medicId = req.body.specializationList;
+  const medicType = req.body.medicListType;
 
-  //Hash la constraseña
-  bcrypt
-    .hash(password, 12)
-    .then((passwordHashed) => {
-      //Guardando nuevo usuario
-      const userm = new user(
-        null,
-        firstName,
-        lastName,
-        email,
-        passwordHashed,
-        medicId
-      );
-      userm.save();
-    })
-    .then((result) => {
-      res.status(201).json({ message: "User created" });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  try {
+    const salt = await bcrypt.genSalt(10);
+    //Hash la constraseña
+    const hashedPassword = await bcrypt.hash(password, salt);
+    const User = new user(
+      null,
+      firstName,
+      lastName,
+      email,
+      hashedPassword,
+      medicType
+    );
+    await User.save();
+    res.status(201).json({ message: "User created" });
+  } catch (error) {
+    next(error);
+  }
 };
 
 //Funcion para logear un usuario

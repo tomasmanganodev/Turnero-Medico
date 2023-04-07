@@ -17,11 +17,20 @@ module.exports = class user {
   //Guardar en la base de datos
   save() {
     return db.execute(
-      `INSERT INTO users REGEXP) 
+      `INSERT INTO users (first_name, last_name, email, passwrd, id_medic)
          VALUES (?, ?, ?, ?, ?)`,
       [this.FirstName, this.LastName, this.Email, this.Password, this.MedicID]
     );
   }
+
+  static saveByEmailAndPass(email, password) {
+    return db.execute(
+      `INSERT INTO users(email, passwrd)
+         VALUES (?, ?)`,
+      [email, password]
+    );
+  }
+
   //Buscar todos los “User” almacenados en la base de datos
   static findAll() {
     return db.execute(`SELECT first_name, last_name, email, passwrd, medic_id
