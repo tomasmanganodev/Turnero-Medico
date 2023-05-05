@@ -103,6 +103,12 @@ export class schedule {
       calendarRow.appendChild(calendarCell);
       if (i != 0) {
         calendarCell.textContent = this.#arrayHour[i - 1];
+      } else {
+        calendarCell.classList.add("selectMedCell");
+        const selMed = document.createElement("select");
+        selMed.setAttribute("id", "selectMed");
+        selMed.name = "selectMed";
+        calendarCell.appendChild(selMed);
       }
     }
   }
@@ -118,7 +124,6 @@ export class schedule {
       const calendarCell = document.getElementById(dayId);
       calendarCell.appendChild(dayName);
       calendarCell.appendChild(dayDate);
-      console.log(calendarCell);
     }
   }
 }

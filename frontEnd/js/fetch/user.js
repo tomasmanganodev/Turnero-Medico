@@ -1,30 +1,9 @@
-async function getData(url) {
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-    throw new Error("Failed to get data");
-  }
-}
-
-async function postData(url, data) {
-  try {
-    const response = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    return await response.json();
-  } catch (error) {
-    console.error(error);
-    throw new Error("Failed to post data");
-  }
-}
+import call from "./postGet.js";
 
 async function getMedicTypeData() {
-  const medicType = await getData("http://localhost:3333/admin/list/medicType");
+  const medicType = await call.getData(
+    "http://localhost:3333/admin/list/medicType"
+  );
   const data = await medicType;
   console.log(data.list);
   return data.list;
@@ -50,7 +29,7 @@ function postUser() {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    postData(USER_API_URL, data);
+    call.postData(USER_API_URL, data);
   });
 }
 
@@ -63,7 +42,7 @@ function postMedic() {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     console.log(data);
-    postData(USER_API_URL, data);
+    call.postData(USER_API_URL, data);
   });
 }
 

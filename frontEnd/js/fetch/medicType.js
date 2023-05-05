@@ -1,5 +1,4 @@
 const formMedType = document.getElementById("formMedicType");
-console.log(formMedType);
 
 formMedType.addEventListener("submit", (event) => {
   event.preventDefault();

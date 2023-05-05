@@ -39,9 +39,45 @@
           <button class="buttonMenu">Cambiar fecha</button>
         </div>
         <div id="Menu">
-          <button id="buttonAdd" class="buttonMenu">Agregar turno</button>
-          <button id="buttonUpd" class="buttonMenu">Modificar turno</button>
-          <button id="buttonDel" class="buttonMenu">Eliminar turno</button>
+          <div class="accordionItem">
+            <button id="buttonAdd" class="buttonMenu">Agregar turno</button>
+
+            <div class="accordionContent">
+              <form method="post" id="FormAddTurn">
+                <label for="firstName">Nombre</label>
+                <input type="text" name="firstName" id="firstName" />
+                <label for="lastName">Apellido</label>
+                <input type="text" name="lastName" id="lastName" />
+                <label for="telephone">Telefono</label>
+                <input type="tel" name="telephone" id="telephone" />
+                <label for="dni">D.N.I</label>
+                <input type="text" name="dni" id="dni" />
+                <select name="hasMedIns">
+                  <option value="0">no</option>
+                  <option value="1">si</option>
+                </select>
+                <input type="date" name="dateConsult" id="dateConsult" />
+                <label for="dateHour">Horario</label>
+                <input type="text" name="dateHour" id="dateHour" />
+                <label for="dateDuration">Duración</label>
+                <input type="text" name="dateDuration" id="dateDuration" />
+
+                <button type="submit">Agregar</button>
+              </form>
+            </div>
+          </div>
+          <div class="accordionItem">
+            <div>
+              <button id="buttonUpd" class="buttonMenu">Modificar turno</button>
+            </div>
+            <div class="accordionContent"></div>
+          </div>
+          <div class="accordionItem">
+            <div>
+              <button id="buttonDel" class="buttonMenu">Eliminar turno</button>
+            </div>
+            <div class="accordionContent"></div>
+          </div>
         </div>
       </div>
     </div>
