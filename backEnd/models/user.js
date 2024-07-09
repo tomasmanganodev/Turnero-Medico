@@ -33,20 +33,27 @@ module.exports = class user {
 
   //Buscar todos los “User” almacenados en la base de datos
   static findAll() {
-    return db.execute(`SELECT first_name, last_name, email, passwrd, medic_id
+    return db.execute(`SELECT first_name, last_name, email, passwrd, id_medic
          FROM users`);
   }
 
   //Buscar todos los usuarios medicos guardados en la base de datos
-  static findAllMedics() {
-    return db.execute(`SELECT first_name, last_name, email, medic_id
+  static async findAllMedics() {
+    try {
+      const result = await db.execute(
+        `SELECT id ,first_name, last_name, email, id_medic
         FROM users
-        WHERE medic_id != 0`);
+        WHERE id_medic != 0`
+          );
+      return result[0];
+    } catch (error) {
+      throw new Error('Error al buscar los medicos solicitados');
+  }
   }
   //Buscar por ID
   static findById(ID) {
     return db.execute(
-      `SELECT first_name, last_name, email, passwrd,    medic_id
+      `SELECT first_name, last_name, email, passwrd,    id_medic
          FROM users
          WHERE users.id = ?`,
       [ID]
@@ -77,7 +84,7 @@ module.exports = class user {
          last_name = ?,
          email = ?,
          passwrd = ?,
-         medic_id = ? 
+         id_medic = ? 
          WHERE users.id = ?`,
       [
         this.FirstName,

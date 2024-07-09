@@ -36,40 +36,23 @@ exports.getMedicType = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-
-  /*medic_type.findAll().then((medics) => {
-    res.status(201).json({
-      list: medics[0],
-    });
-  });*/
 };
 
-exports.getMedic = (req, res, next) => {
-  user.findAllMedics();
-  user.findAllMedics().then((Medics) => {
-    console.log(Medics);
-  });
+exports.getMedic = async (req, res, next) => {
+  
+  try {
+    const medics = await user.findAllMedics();
+
+    res.status(201).json({
+      list: medics,
+  })  
+  } catch (error) {
+    
+  }
 };
 
 //Funcion para agregar un turno
-exports.addTurn = (req, res, next) => {
-  //variables
-  const firstName = req.body.firstName;
-  const lastName = req.body.lastName;
-  const dni = req.body.dni;
-  const tel = req.body.tel;
-  const ObraSocial = req.body.ObraSocial;
-  const medic = req.body.medic;
-  const year = req.body.year;
-  const mes = req.body.mes;
-  const dia = req.body.dia;
-  const hora = req.body.hora;
 
-  const Client = new client(dni, firstName, lastName, tel);
-  Client.save();
-  const MedicDate = new medicDate(null, dia, dni, 24);
-  MedicDate.save();
-};
 
 exports.addMedicType = (req, res, next) => {
   //variables

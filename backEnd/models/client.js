@@ -1,19 +1,25 @@
+//Importar archivo “Database”
+const db = require('../util/Database');
+
 class client {
   //Constructor de la clase
-  constructor(Id, firstName, lastName, telephone) {
-    this.Id = Id;
+  constructor(id, dni, firstName, lastName, telephone, obrasocial) {
+    this.id = id;
+    this.dni = dni;
     this.firstName = firstName;
     this.lastName = lastName;
     this.telephone = telephone;
+    this.obrasocial = obrasocial
   }
 
   // Guardar nuevo paciente en la base datos
-  save() {
-    return db.execute(
-      `INSERT INTO clients (dni, first_name, last_name, telephone) 
-        VALUES (?, ?, ?, ?)`,
-      [this.Id, this.firstName, this.lastName, this.telephone]
+  async save() {
+    const result = await db.execute(
+      `INSERT INTO clients (dni, first_name, last_name, telephone, obra_social) 
+        VALUES (?, ?, ?, ?,?)`,
+      [this.dni, this.firstName, this.lastName, this.telephone, this.obrasocial]
     );
+    return result[0].insertId;
   }
 
   // Buscar todos los pacientes
@@ -21,30 +27,30 @@ class client {
     return db.execute(`SELECT first_name, last_name, telephone
         FROM clients`);
   }
-  //Buscar por ID
-  static findById(ID) {
-    return db.execute(
-      `SELECT first_name, last_name, telephone
+  //Buscar por dni
+  static  async findBydni(dni) {
+    return  await db.execute(
+      `SELECT id, first_name, last_name, telephone, dni
         FROM clients
-        WHERE clients.id = ?`,
-      [ID]
+        WHERE clients.dni = ?`,
+      [dni]
     );
   }
-  //Eliminar por ID
-  static delete(ID) {
+  //Eliminar por dni
+  static delete(dni) {
     return db.execute(
       `DELETE FROM clients
-        WHERE clients.id = ?`,
-      [ID]
+        WHERE clients.dni = ?`,
+      [dni]
     );
   }
-  //Actualizar por ID
-  static update(ID) {
+  //Actualizar por dni
+  static update(dni) {
     return db.execute(
       `UPDATE clients 
         SET first_name = ?, last_name = ? , telephone  = ?
-        WHERE clients.id = ?`,
-      [this.FirstName, this.LastName, this.Email, this.telephone, ID]
+        WHERE clients.dni = ?`,
+      [this.FirstName, this.LastName, this.Email, this.telephone, dni]
     );
   }
 }

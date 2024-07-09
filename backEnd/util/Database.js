@@ -4,7 +4,7 @@ const pool = mysql.createPool({
   host: "localhost",
   user: "root",
   database: "turnerodb",
-  password: "*Yxg]v?YFq*jkUVZX0",
+  password: "root",
 });
 
 module.exports = pool.promise();

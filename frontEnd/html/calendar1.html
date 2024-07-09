@@ -1,0 +1,88 @@
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
+    
+    <link rel="stylesheet" href="../css/calendar.css" />
+    <link rel="stylesheet" href="../css/navBar.css" />
+  </head>
+  <body>
+
+
+    <div id="navBar">
+      <ul id="navBarList">
+        <li><a class="navBarLink" href=""></a>Telegram Bot</li>
+        <li><a class="navBarLink" href=""></a>Calendario</li>
+        <li><a class="navBarLink" href=""></a>Historial</li>
+      </ul>
+    </div>
+    <div id="schedule">
+      <div id='calendar'></div>
+      <div id="interface">
+        <div id="arrowButtons">
+          <button type="submit" class="arrowButton" id="buttonLastWeek">
+            <img
+              src="../icons/arrow_back_FILL1_wght400_GRAD0_opsz48.svg"
+              alt="arrow_back.svg"
+            />
+          </button>
+          <button type="submit" class="arrowButton" id="buttonNextWeek">
+            <img
+              src="../icons/arrow_forward_FILL1_wght400_GRAD0_opsz48.svg"
+              alt="arrow_next.svg"
+            />
+          </button>
+        </div>
+        <div id="Week">
+          <label for="buttonWeek">Selecionar fecha: </label>
+          <input type="date" name="buttonWeek" id="buttonWeek" />
+          <button class="buttonMenu" id="buttonchangeDate">Cambiar fecha</button>
+        </div>
+        <div id="Menu">
+          <div class="accordionItem">
+            <button id="buttonAdd" class="buttonMenu">Agregar turno</button>
+
+            <div class="accordionContent">
+              <form method="post" id="FormAddTurn">
+                <label for="firstName">Nombre</label>
+                <input type="text" name="firstName" id="firstName" />
+                <label for="lastName">Apellido</label>
+                <input type="text" name="lastName" id="lastName" />
+                <label for="telephone">Telefono</label>
+                <input type="tel" name="telephone" id="telephone" />
+                <label for="dni">D.N.I</label>
+                <input type="text" name="dni" id="dni" />
+                <select name="hasMedIns">
+                  <option value="0">no</option>
+                  <option value="1">si</option>
+                </select>
+                <input type="date" name="dateConsult" id="dateConsult" />
+                <label for="dateHour">Horario</label>
+                <input type="text" name="dateHour" id="dateHour" />
+                <label for="dateDuration">Duración</label>
+                <input type="text" name="dateDuration" id="dateDuration" />
+
+                <button type="submit">Agregar</button>
+              </form>
+            </div>
+          </div>
+          <div class="accordionItem">
+            <div>
+              <button id="buttonUpd" class="buttonMenu">Modificar turno</button>
+            </div>
+            <div class="accordionContent"></div>
+          </div>
+          <div class="accordionItem">
+            <div>
+              <button id="buttonDel" class="buttonMenu">Eliminar turno</button>
+            </div>
+            <div class="accordionContent"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <script src="../js/config.js"></script>
+  </body>
+</html>

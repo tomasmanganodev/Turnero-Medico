@@ -11,12 +11,12 @@ body {
   align-items: center;
   margin: 2% 5% 0 5%;
 }
-#calendar {
+/*#calendar {
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 80%;
-}
+} */
 #calTable {
   width: 100%;
 

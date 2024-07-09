@@ -15,13 +15,9 @@ export async function postConsult() {
   });
 }
 
-export async function getConsults(id_medic, date_start) {
-  const API_CONSULTS = "http://localhost:3333/getConsultWeek";
-  const data = {
-    medic: id_medic,
-    date_start: date_start,
-  };
-  //console.log(data);
-  const a = await postData(API_CONSULTS, data);
-  console.log(a.consults);
+export async function getConsults(id_medic, date_start, end_date) {
+ 
+  const API_CONSULTS = `http://localhost:3333/consults/week/${date_start}/${end_date}/${id_medic}`;
+  const ListTurn = await getData(API_CONSULTS);
+  return ListTurn;
 }

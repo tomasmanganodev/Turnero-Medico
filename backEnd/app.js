@@ -1,18 +1,18 @@
-//Importar path
+//Import path
 const path = require("path");
-//Importar express
+//Import express
 const express = require("express");
-//Importar archivo “Database”
+//Import archivo “Database”
 const db = require("./util/Database");
-//Importar body-parser
+//Import body-parser
 const bodyParser = require("body-parser");
-//Importar express()
+//Import express()
 const app = express();
-//Importar archivo auth
+//Import archivo auth
 const authRoutes = require("./routes/auth");
-//Importar archivo calendar
+//Import archivo calendar
 const calendarRoutes = require("./routes/calendar");
-//Importar archivo admin
+//Import archivo admin
 const adminRoutes = require("./routes/admin");
 
 // Este codigo se utiliza para otorgar un correcto funcionamiento del REST API
@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 //Este codigo es para establecer las routas
 app.use("/admin", adminRoutes);
 app.use("/auth", authRoutes);
-//app.use(calendarRoutes);
+app.use(calendarRoutes);
 
 //Iniciar la app
 app.listen(3333);

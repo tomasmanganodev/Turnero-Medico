@@ -126,4 +126,35 @@ export class schedule {
       calendarCell.appendChild(dayDate);
     }
   }
+  drawTurns(list) {
+  
+    list.list.forEach(turn => {
+      const { dateConsult, star_hour, end_hour, id_client, id_user } = turn;
+      const date = new Date(dateConsult);
+      const day = date.getDay();
+      const startHour = star_hour;
+      const endHour = end_hour;
+
+      //this.#lastHour - this.#initialHour
+      
+
+      // Calcular índices de hora
+      const startHourPosition = (startHour - this.#initialHour) * this.#durationTurns;
+      const endHourPosition = (endHour - this.#initialHour) * this.#durationTurns;
+      console.log(startHourPosition);
+
+      // Dibujar el turno en las celdas correspondientes
+      for (let i = startHourIndex; i < endHourIndex; i++) {
+        const cell = document.querySelector(`.turn.day_${day}.${this.#arrayHour[i]}`);
+        console.log(cell);
+        if (cell) {
+          const turnDiv = document.createElement("div");
+          turnDiv.classList.add("turnSlot");
+          turnDiv.textContent = `Cliente: ${id_client}, Usuario: ${id_user}`;
+          cell.appendChild(turnDiv);
+        }
+      }
+    });
+  }
+
 }
